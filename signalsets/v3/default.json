@@ -1,4 +1,171 @@
 { "commands": [
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "0100"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_STEER_ANGLE", "path": "Movement", "fmt": { "len": 16, "max": 65535, "unit": "degrees" }, "name": "Steering wheel angle"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "012F"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_ECU_V", "path": "Battery", "fmt": { "len": 8, "max": 255, "unit": "volts" }, "name": "Computer supply voltage"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B00"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_FL_VSS_V2", "path": "Movement", "fmt": { "len": 16, "max": 65535, "unit": "kilometersPerHour" }, "name": "FL wheel speed"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B01"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_FR_VSS_V2", "path": "Movement", "fmt": { "len": 16, "max": 65535, "unit": "kilometersPerHour" }, "name": "FR wheel speed"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B02"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_RL_VSS_V2", "path": "Movement", "fmt": { "len": 16, "max": 65535, "unit": "kilometersPerHour" }, "name": "RL wheel speed"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B03"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_RR_VSS_V2", "path": "Movement", "fmt": { "len": 16, "max": 65535, "unit": "kilometersPerHour" }, "name": "RR wheel speed"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B04"}, "freq": 0.25,
+  "signals": [
+    {"id": "DACIA_VSS_740", "path": "Movement", "fmt": { "len": 16, "max": 65535, "unit": "kilometersPerHour" }, "name": "Vehicle speed", "suggestedMetric": "speed"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B05"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_FAULT_CNT", "path": "ECU", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Fault counter"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B06"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_ODO_V2", "path": "Trips", "fmt": { "len": 32, "max": 4294967295, "unit": "kilometers" }, "name": "Odometer", "suggestedMetric": "odometer"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B07"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_ACCEL_LONG", "path": "Movement", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Acceleration, longitudinal"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B08"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_FAULT_CYCLES", "path": "ECU", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Fault cycles since disappeared"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B09"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_FAULT_DIST_FIRST", "path": "Trips", "fmt": { "len": 24, "max": 16777215, "unit": "kilometers" }, "name": "Distance at first fault"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B0A"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_FAULT_DIST_LAST", "path": "Trips", "fmt": { "len": 24, "max": 16777215, "unit": "kilometers" }, "name": "Mileage since last fault"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B0B"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_ACCEL_LAT", "path": "Movement", "fmt": { "len": 8, "max": 255, "unit": "gravity" }, "name": "Acceleration, lateral"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B0C"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_YAW", "path": "Movement", "fmt": { "len": 16, "max": 65535, "unit": "unknown" }, "name": "Yaw angle"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B0E"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_BRAKE_P_MC", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "bars" }, "name": "Brake pressure, master cylinder"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B11"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_BRAKE_PEDAL_V2", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Brake pedal"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B14"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_HAZARD_LED", "path": "Electrical", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Hazard lights LED"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B15"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_BRAKE_LIGHTS", "path": "Electrical", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Brake lights request"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B17"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_HYD_T", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "celsius" }, "name": "Hydraulic unit temperature"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B1A"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_VEH", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Vehicle status"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B24"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_SPEEDO_IDX", "path": "Movement", "fmt": { "len": 16, "max": 65535, "unit": "millimeters" }, "name": "Speedometer index"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B26"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_GBOX_TYPE", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Gearbox type"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B27"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_PARK_BRAKE", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Parking brake"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B2E"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_TRAILER_STAB", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Trailer stability"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B31"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_HILL_START", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Hill start assist"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B35"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_EBD",              "path": "Engine", "fmt": {           "len": 1, "max": 1, "unit": "scalar" }, "name": "Electronic brakeforce distribution"},
+    {"id": "DACIA_EBD_WARN",         "path": "Engine", "fmt": {"bix": 1,  "len": 1, "max": 1, "unit": "scalar" }, "name": "Electronic brakeforce distribution, warning"},
+    {"id": "DACIA_ABS",              "path": "Engine", "fmt": {"bix": 2,  "len": 1, "max": 1, "unit": "scalar" }, "name": "ABS"},
+    {"id": "DACIA_ABS_WARN",         "path": "Engine", "fmt": {"bix": 3,  "len": 1, "max": 1, "unit": "scalar" }, "name": "ABS, warning"},
+    {"id": "DACIA_TC_OFF",           "path": "Engine", "fmt": {"bix": 4,  "len": 1, "max": 1, "unit": "scalar" }, "name": "Traction control, deactivated"},
+    {"id": "DACIA_TC",               "path": "Engine", "fmt": {"bix": 6,  "len": 1, "max": 1, "unit": "scalar" }, "name": "Traction control"},
+    {"id": "DACIA_TC_WARN",          "path": "Engine", "fmt": {"bix": 7,  "len": 1, "max": 1, "unit": "scalar" }, "name": "Traction control, warning"},
+    {"id": "DACIA_ESP_OFF",          "path": "Engine", "fmt": {"bix": 8,  "len": 1, "max": 1, "unit": "scalar" }, "name": "ESP, deactivated"},
+    {"id": "DACIA_TRAJ_CTRL",        "path": "Engine", "fmt": {"bix": 10, "len": 1, "max": 1, "unit": "scalar" }, "name": "Trajectory control"},
+    {"id": "DACIA_TRAJ_CTRL_WARN",   "path": "Engine", "fmt": {"bix": 11, "len": 1, "max": 1, "unit": "scalar" }, "name": "Trajectory control, warning"},
+    {"id": "DACIA_TORQUE_CTRL",      "path": "Engine", "fmt": {"bix": 12, "len": 1, "max": 1, "unit": "scalar" }, "name": "Engine torque control"},
+    {"id": "DACIA_TORQUE_CTRL_WARN", "path": "Engine", "fmt": {"bix": 13, "len": 1, "max": 1, "unit": "scalar" }, "name": "Engine torque control, warning"},
+    {"id": "DACIA_EBA_ASSIST",       "path": "Engine", "fmt": {"bix": 15, "len": 1, "max": 1, "unit": "scalar" }, "name": "Emergency braking assistance"},
+    {"id": "DACIA_EBA_ASSIST_WARN",  "path": "Engine", "fmt": {"bix": 16, "len": 1, "max": 1, "unit": "scalar" }, "name": "Emergency braking assistance, warning"},
+    {"id": "DACIA_EBA_ANT",          "path": "Engine", "fmt": {"bix": 20, "len": 1, "max": 1, "unit": "scalar" }, "name": "Emergency braking anticipation"},
+    {"id": "DACIA_EBA_ANT_WARN",     "path": "Engine", "fmt": {"bix": 21, "len": 1, "max": 1, "unit": "scalar" }, "name": "Emergency braking anticipation, warning"},
+    {"id": "DACIA_ANTI_ROLL",        "path": "Engine", "fmt": {"bix": 24, "len": 1, "max": 1, "unit": "scalar" }, "name": "Anti-rollover control"},
+    {"id": "DACIA_ANTI_ROLL_WARN",   "path": "Engine", "fmt": {"bix": 25, "len": 1, "max": 1, "unit": "scalar" }, "name": "Anti-rollover control, warning"},
+    {"id": "DACIA_BRAKE_DIVE",       "path": "Engine", "fmt": {"bix": 32, "len": 1, "max": 1, "unit": "scalar" }, "name": "Brake dive limiter"},
+    {"id": "DACIA_BRAKE_DIVE_WARN",  "path": "Engine", "fmt": {"bix": 33, "len": 1, "max": 1, "unit": "scalar" }, "name": "Brake dive limiter, warning"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B36"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_STEER_ANGLE_OFFSET", "path": "Movement", "fmt": { "len": 8, "max": 255, "unit": "degrees" }, "name": "Steering wheel angle, offset"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B37"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_ACCEL_LAT_OFFSET", "path": "Movement", "fmt": { "len": 8, "max": 255, "unit": "gravity" }, "name": "Acceleration offset, lateral"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B38"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_ACCEL_LONG_OFFSET", "path": "Movement", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Acceleration offset, longitudinal"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B39"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_P_SNS_OFFSET", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "bars" }, "name": "Pressure sensor offset"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B3C"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_DRIVE_TYPE", "path": "Drivetrain", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Driving type"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B3D"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_SUPPLIER_NUM", "path": "ECU", "fmt": { "len": 16, "max": 65535, "unit": "scalar" }, "name": "Supplier number"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B42"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_STEER_SPD", "path": "Movement", "fmt": { "len": 16, "max": 65535, "unit": "unknown" }, "name": "Steering wheel speed"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B47"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_GRIP_CTRL", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Improved grip"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4B4E"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_VACUUM_P", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "bars" }, "name": "Vacuum sensor pressure"}
+  ]},
+{ "hdr": "740", "rax": "760", "fcm1": true, "dbg": true, "cmd": {"22": "4BBB"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_WHEEL_SPD_SIGN", "path": "Movement", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Wheel speed sensor, signed"}
+  ]},
 { "hdr": "743", "dbg": true, "cmd": {"22": "0207"}, "freq": 2,
   "signals": [
     {"id": "DACIA_ODO", "path": "Trips", "fmt": { "len": 24, "max": 16777215, "unit": "kilometers" }, "name": "Odometer", "suggestedMetric": "odometer"}
@@ -448,6 +615,10 @@
 { "hdr": "7E0", "dbg": true, "cmd": {"22": "FD8B"}, "freq": 1,
   "signals": [
     {"id": "DACIA_COOLANT_T_SNS_V", "path": "Engine", "fmt": { "len": 16, "max": 15.99975, "div": 4096, "unit": "volts" }, "name": "Coolant temperature sensor voltage"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "24F2"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_MAF", "path": "Engine", "fmt": { "len": 16, "max": 6553.5, "div": 10, "unit": "gramsPerSecond" }, "name": "Measured air flow", "suggestedMetric": "massAirFlow"}
   ]}
 ]
 }
