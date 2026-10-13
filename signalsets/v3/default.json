@@ -263,11 +263,11 @@
   ]},
 { "hdr": "742", "din": "C0", "dbg": true, "cmd": {"22": "0101"}, "freq": 0.25,
   "signals": [
-    {"id": "DACIA_STEER_WHL_SPD_CALC", "path": "Tires", "fmt": { "len": 16, "max": 3276, "min": -3276, "div": 10, "add": -3276.7, "unit": "unknown" }, "name": "Steering wheel speed calculated by epas"}
+    {"id": "DACIA_STEER_WHL_SPD_CALC", "path": "Control", "fmt": { "len": 16, "max": 3276, "min": -3276, "div": 10, "add": -3276.7, "unit": "unknown" }, "name": "Steering wheel speed"}
   ]},
 { "hdr": "742", "din": "C0", "dbg": true, "cmd": {"22": "0104"}, "freq": 0.25,
   "signals": [
-    {"id": "DACIA_STEER_WHL_ANG_742", "path": "Tires", "fmt": { "len": 16, "max": 3276, "min": -3276, "div": 10, "add": -3276.7, "unit": "degrees" }, "name": "Steering wheel angle"}
+    {"id": "DACIA_STEER_WHL_ANG_742", "path": "Control", "fmt": { "len": 16, "max": 3276, "min": -3276, "div": 10, "add": -3276.7, "unit": "degrees" }, "name": "Steering wheel angle"}
   ]},
 { "hdr": "742", "rax": "762", "fcm1": true, "din": "C0", "dbg": true, "cmd": {"21": "03"}, "freq": 1,
   "signals": [
@@ -368,6 +368,7 @@
   ]},
 { "hdr": "743", "rax": "763", "din": "C0", "dbg": true, "cmd": {"22": "2006"}, "freq": 5,
   "signals": [
+    {"id": "DACIA_BAT_V",         "path": "Battery", "fmt": { "len": 16, "max": 6553, "div": 10, "unit": "volts" }, "name": "Battery voltage",      "suggestedMetric": "starterBatteryVoltage"},
     {"id": "DACIA_BAT_V_12_V_V3", "path": "Battery", "fmt": { "len": 16, "max": 6553, "div": 10, "unit": "volts" }, "name": "BATTERY VOLTAGE 12 v"}
   ]},
 { "hdr": "743", "rax": "763", "dbg": true, "cmd": {"22": "2008"}, "freq": 1,
@@ -453,7 +454,8 @@
   ]},
 { "hdr": "744", "rax": "764", "dbg": true, "cmd": {"22": "43A4"}, "freq": 5,
   "signals": [
-    {"id": "DACIA_HEAT_T", "path": "Climate", "fmt": { "len": 16, "max": 215.996, "min": -40, "div": 256, "add": -40, "unit": "celsius" }, "name": "Heating temperature"}
+    {"id": "DACIA_HEAT_T_RAW", "path": "Climate", "fmt": { "len": 8,  "max": 255,                                         "unit": "scalar"  }, "name": "Heating temperature, raw"},
+    {"id": "DACIA_HEAT_T",     "path": "Climate", "fmt": { "len": 16, "max": 215.996, "min": -40, "div": 256, "add": -40, "unit": "celsius" }, "name": "Heating temperature"}
   ]},
 { "hdr": "744", "rax": "764", "dbg": true, "cmd": {"22": "43A5"}, "freq": 5,
   "signals": [
@@ -502,7 +504,7 @@
     {"id": "DACIA_LEFT_INDICATOR_REQ",   "path": "Engine",   "fmt": {"bix": 3,   "len": 1,  "max": 1,                            "unit": "offon"             }, "name": "Left indicator request"},
     {"id": "DACIA_DRIVER_S_DOOR",        "path": "Doors",    "fmt": {"bix": 6,   "len": 1,  "max": 1,                            "unit": "offon"             }, "name": "Driver's door"},
     {"id": "DACIA_PASSENGER_S_DOOR",     "path": "Doors",    "fmt": {"bix": 7,   "len": 1,  "max": 1,                            "unit": "offon"             }, "name": "Passenger's door"},
-    {"id": "DACIA_RR_DOOR",              "path": "Doors",    "fmt": {"bix": 8,   "len": 1,  "max": 1,                            "unit": "offon"             }, "name": "Rear right door"},
+    {"id": "DACIA_RR_DOOR_V2",           "path": "Doors",    "fmt": {"bix": 8,   "len": 1,  "max": 1,                            "unit": "offon"             }, "name": "Rear right door"},
     {"id": "DACIA_LEFT_HAND_REAR_DOOR",  "path": "Doors",    "fmt": {"bix": 9,   "len": 1,  "max": 1,                            "unit": "scalar"            }, "name": "Left hand rear door"},
     {"id": "DACIA_TAILGATE_BOOT_LID",    "path": "Engine",   "fmt": {"bix": 10,  "len": 1,  "max": 1,                            "unit": "offon"             }, "name": "Tailgate / boot lid"},
     {"id": "DACIA_CENTRAL_DOOR_LOCKING", "path": "Doors",    "fmt": {"bix": 11,  "len": 1,  "max": 1,                            "unit": "offon"             }, "name": "Central door locking button"},
@@ -545,7 +547,7 @@
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "4109"}, "freq": 60,
   "signals": [
-    {"id": "DACIA_TP_FL_ALERT", "path": "Tires", "name": "Front left tire pressure alert", "fmt": {"len": 16, "map": {
+    {"id": "DACIA_TP_FL_ALERT", "path": "Tires", "name": "Front left tire pressure alert", "fmt": {"len": 8, "map": {
           "0": { "description": "None",    "value": "NONE" },
           "1": { "description": "Alert",   "value": "ALERT" },
           "2": { "description": "Warning", "value": "WARNING" },
@@ -559,7 +561,7 @@
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "410A"}, "freq": 60,
   "signals": [
-    {"id": "DACIA_TP_FR_ALERT", "path": "Tires", "name": "Front right tire pressure alert", "fmt": {"len": 16, "map": {
+    {"id": "DACIA_TP_FR_ALERT", "path": "Tires", "name": "Front right tire pressure alert", "fmt": {"len": 8, "map": {
           "0": { "description": "None",    "value": "NONE" },
           "1": { "description": "Alert",   "value": "ALERT" },
           "2": { "description": "Warning", "value": "WARNING" },
@@ -573,7 +575,7 @@
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "410B"}, "freq": 60,
   "signals": [
-    {"id": "DACIA_TP_RL_ALERT", "path": "Tires", "name": "Rear left tire pressure alert", "fmt": {"len": 16, "map": {
+    {"id": "DACIA_TP_RL_ALERT", "path": "Tires", "name": "Rear left tire pressure alert", "fmt": {"len": 8, "map": {
           "0": { "description": "None",    "value": "NONE" },
           "1": { "description": "Alert",   "value": "ALERT" },
           "2": { "description": "Warning", "value": "WARNING" },
@@ -587,7 +589,7 @@
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "410C"}, "freq": 60,
   "signals": [
-    {"id": "DACIA_TP_RR_ALERT", "path": "Tires", "name": "Rear right tire pressure alert", "fmt": {"len": 16, "map": {
+    {"id": "DACIA_TP_RR_ALERT", "path": "Tires", "name": "Rear right tire pressure alert", "fmt": {"len": 8, "map": {
           "0": { "description": "None",    "value": "NONE" },
           "1": { "description": "Alert",   "value": "ALERT" },
           "2": { "description": "Warning", "value": "WARNING" },
@@ -601,67 +603,76 @@
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "4186"}, "freq": 3,
   "signals": [
-    {"id": "DACIA_LOW_BEAM", "path": "Lights", "fmt": { "len": 16, "max": 65535, "unit": "scalar" }, "name": "Low beams on"}
+    {"id": "DACIA_LOW_BEAM", "path": "Lights", "fmt": { "len": 1, "max": 1, "unit": "offon" }, "name": "Low beams on"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "6026"}, "freq": 3,
   "signals": [
-    {"id": "DACIA_FL_DOOR", "path": "Doors", "fmt": { "len": 16, "max": 65535, "unit": "scalar" }, "name": "Front left door open"}
+    {"id": "DACIA_FL_DOOR", "path": "Doors", "fmt": { "len": 1, "max": 1, "unit": "offon" }, "name": "Front left door open"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "6027"}, "freq": 3,
   "signals": [
-    {"id": "DACIA_FR_DOOR", "path": "Doors", "fmt": { "len": 16, "max": 65535, "unit": "scalar" }, "name": "Front right door open"}
+    {"id": "DACIA_FR_DOOR", "path": "Doors", "fmt": { "len": 1, "max": 1, "unit": "offon" }, "name": "Front right door open"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "609B"}, "freq": 3,
   "signals": [
-    {"id": "DACIA_TAILGATE", "path": "Doors", "fmt": { "len": 16, "max": 65535, "unit": "scalar" }, "name": "Tailgate open"}
+    {"id": "DACIA_TAILGATE", "path": "Doors", "fmt": { "len": 1, "max": 1, "unit": "offon" }, "name": "Tailgate open"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "60C6"}, "freq": 3,
   "signals": [
-    {"id": "DACIA_IGN", "path": "Engine", "fmt": { "len": 16, "max": 65535, "unit": "scalar" }, "name": "Ignition relay on"}
+    {"id": "DACIA_IGN", "path": "Engine", "fmt": { "len": 1, "max": 1, "unit": "offon" }, "name": "Ignition relay on"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "61B2"}, "freq": 3,
   "signals": [
-    {"id": "DACIA_RL_DOOR", "path": "Doors", "fmt": { "len": 16, "max": 65535, "unit": "scalar" }, "name": "Rear left door open"}
+    {"id": "DACIA_RL_DOOR", "path": "Doors", "fmt": { "len": 1, "max": 1, "unit": "offon" }, "name": "Rear left door open"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "61B3"}, "freq": 3,
   "signals": [
-    {"id": "DACIA_RR_DOOR_V2", "path": "Doors", "fmt": { "len": 16, "max": 65535, "unit": "scalar" }, "name": "Rear right door open"}
+    {"id": "DACIA_RR_DOOR", "path": "Doors", "fmt": { "len": 1, "max": 1, "unit": "offon" }, "name": "Rear right door open"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "6300"}, "freq": 60,
   "signals": [
-    {"id": "DACIA_TP_FL", "path": "Tires", "fmt": { "len": 16, "max": 767.25, "mul": 3, "div": 4, "nullmax": 767.25, "unit": "kilopascal" }, "name": "Front left tire pressure", "suggestedMetric": "frontLeftTirePressure"}
+    {"id": "DACIA_TP_FL", "path": "Tires", "fmt": {           "len": 16, "max": 767.25, "mul": 3, "div": 4, "nullmax": 767.25, "unit": "kilopascal" }, "name": "Front left tire pressure",  "suggestedMetric": "frontLeftTirePressure"},
+    {"id": "DACIA_TP_FR", "path": "Tires", "fmt": {"bix": 16, "len": 16, "max": 767.25, "mul": 3, "div": 4, "nullmax": 767.25, "unit": "kilopascal" }, "name": "Front right tire pressure", "suggestedMetric": "frontRightTirePressure"},
+    {"id": "DACIA_TP_RL", "path": "Tires", "fmt": {"bix": 32, "len": 16, "max": 767.25, "mul": 3, "div": 4, "nullmax": 767.25, "unit": "kilopascal" }, "name": "Rear left tire pressure",   "suggestedMetric": "rearLeftTirePressure"},
+    {"id": "DACIA_TP_RR", "path": "Tires", "fmt": {"bix": 48, "len": 16, "max": 767.25, "mul": 3, "div": 4, "nullmax": 767.25, "unit": "kilopascal" }, "name": "Rear right tire pressure",  "suggestedMetric": "rearRightTirePressure"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "6301"}, "freq": 60,
   "signals": [
-    {"id": "DACIA_TP_FR", "path": "Tires", "fmt": { "len": 16, "max": 767.25, "mul": 3, "div": 4, "nullmax": 767.25, "unit": "kilopascal" }, "name": "Front right tire pressure", "suggestedMetric": "frontRightTirePressure"}
+    {"id": "DACIA_TP_FR_V2",     "path": "Tires", "fmt": { "len": 16, "max": 767.25, "mul": 3, "div": 4, "nullmax": 767.25, "unit": "kilopascal" }, "name": "Front right tire pressure",             "suggestedMetric": "frontRightTirePressure"},
+    {"id": "DACIA_TP_FR_STATUS", "path": "Tires", "fmt": { "len": 8,  "max": 255,                                           "unit": "scalar"     }, "name": "Front right tire pressure record, raw"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "6302"}, "freq": 60,
   "signals": [
-    {"id": "DACIA_TP_RL", "path": "Tires", "fmt": { "len": 16, "max": 767.25, "mul": 3, "div": 4, "nullmax": 767.25, "unit": "kilopascal" }, "name": "Rear left tire pressure", "suggestedMetric": "rearLeftTirePressure"}
+    {"id": "DACIA_TP_RL_V2",     "path": "Tires", "fmt": { "len": 16, "max": 767.25, "mul": 3, "div": 4, "nullmax": 767.25, "unit": "kilopascal" }, "name": "Rear left tire pressure",             "suggestedMetric": "rearLeftTirePressure"},
+    {"id": "DACIA_TP_RL_STATUS", "path": "Tires", "fmt": { "len": 8,  "max": 255,                                           "unit": "scalar"     }, "name": "Rear left tire pressure record, raw"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "6303"}, "freq": 60,
   "signals": [
-    {"id": "DACIA_TP_RR", "path": "Tires", "fmt": { "len": 16, "max": 767.25, "mul": 3, "div": 4, "nullmax": 767.25, "unit": "kilopascal" }, "name": "Rear right tire pressure", "suggestedMetric": "rearRightTirePressure"}
+    {"id": "DACIA_TP_RR_V2",     "path": "Tires", "fmt": { "len": 16, "max": 767.25, "mul": 3, "div": 4, "nullmax": 767.25, "unit": "kilopascal" }, "name": "Rear right tire pressure",             "suggestedMetric": "rearRightTirePressure"},
+    {"id": "DACIA_TP_RR_STATUS", "path": "Tires", "fmt": { "len": 8,  "max": 255,                                           "unit": "scalar"     }, "name": "Rear right tire pressure record, raw"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "6310"}, "freq": 60,
   "signals": [
-    {"id": "DACIA_TT_FL", "path": "Tires", "fmt": { "len": 8, "max": 97, "min": -30, "add": -30, "nullmax": 97, "unit": "celsius" }, "name": "Front left tire temperature", "suggestedMetric": "frontLeftTireTemperature"}
+    {"id": "DACIA_TT_FL", "path": "Tires", "fmt": {           "len": 8, "max": 97, "min": -30, "add": -30, "nullmax": 97, "unit": "celsius" }, "name": "Front left tire temperature",  "suggestedMetric": "frontLeftTireTemperature"},
+    {"id": "DACIA_TT_FR", "path": "Tires", "fmt": {"bix": 8,  "len": 8, "max": 97, "min": -30, "add": -30, "nullmax": 97, "unit": "celsius" }, "name": "Front right tire temperature", "suggestedMetric": "frontRightTireTemperature"},
+    {"id": "DACIA_TT_RL", "path": "Tires", "fmt": {"bix": 16, "len": 8, "max": 97, "min": -30, "add": -30, "nullmax": 97, "unit": "celsius" }, "name": "Rear left tire temperature",   "suggestedMetric": "rearLeftTireTemperature"},
+    {"id": "DACIA_TT_RR", "path": "Tires", "fmt": {"bix": 24, "len": 8, "max": 97, "min": -30, "add": -30, "nullmax": 97, "unit": "celsius" }, "name": "Rear right tire temperature",  "suggestedMetric": "rearRightTireTemperature"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "6311"}, "freq": 60,
   "signals": [
-    {"id": "DACIA_TT_FR", "path": "Tires", "fmt": { "len": 8, "max": 97, "min": -30, "add": -30, "nullmax": 97, "unit": "celsius" }, "name": "Front right tire temperature", "suggestedMetric": "frontRightTireTemperature"}
+    {"id": "DACIA_TT_FR_V2", "path": "Tires", "fmt": { "len": 8, "max": 97, "min": -30, "add": -30, "nullmax": 97, "unit": "celsius" }, "name": "Front right tire temperature", "suggestedMetric": "frontRightTireTemperature"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "6312"}, "freq": 60,
   "signals": [
-    {"id": "DACIA_TT_RL", "path": "Tires", "fmt": { "len": 8, "max": 97, "min": -30, "add": -30, "nullmax": 97, "unit": "celsius" }, "name": "Rear left tire temperature", "suggestedMetric": "rearLeftTireTemperature"}
+    {"id": "DACIA_TT_RL_V2", "path": "Tires", "fmt": { "len": 8, "max": 97, "min": -30, "add": -30, "nullmax": 97, "unit": "celsius" }, "name": "Rear left tire temperature", "suggestedMetric": "rearLeftTireTemperature"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "6313"}, "freq": 60,
   "signals": [
-    {"id": "DACIA_TT_RR", "path": "Tires", "fmt": { "len": 8, "max": 97, "min": -30, "add": -30, "nullmax": 97, "unit": "celsius" }, "name": "Rear right tire temperature", "suggestedMetric": "rearRightTireTemperature"}
+    {"id": "DACIA_TT_RR_V2", "path": "Tires", "fmt": { "len": 8, "max": 97, "min": -30, "add": -30, "nullmax": 97, "unit": "celsius" }, "name": "Rear right tire temperature", "suggestedMetric": "rearRightTireTemperature"}
   ]},
 { "hdr": "745", "rax": "765", "dbg": true, "cmd": {"22": "8004"}, "freq": 3,
   "signals": [
-    {"id": "DACIA_LOCKED", "path": "Doors", "fmt": { "len": 16, "max": 65535, "unit": "scalar" }, "name": "Vehicle locked"}
+    {"id": "DACIA_LOCKED", "path": "Doors", "fmt": { "len": 1, "max": 1, "unit": "offon" }, "name": "Vehicle locked"}
   ]},
 { "hdr": "748", "dbg": true, "cmd": {"22": "3001"}, "freq": 1,
   "signals": [
@@ -1064,7 +1075,7 @@
     {"id": "DACIA_AIR_T",                  "path": "Engine",   "fmt": {"bix": 16,  "len": 8,  "max": 119,   "min": -40,    "mul": 5,   "div": 8,      "add": -40,                   "unit": "celsius"           }, "name": "Air temperature"},
     {"id": "DACIA_MANIFOLD_P_7E0",         "path": "Engine",   "fmt": {"bix": 24,  "len": 16, "max": 389,                  "mul": 37,  "div": 6400,   "add": 10.3,                  "unit": "kilopascal"        }, "name": "Manifold pressure"},
     {"id": "DACIA_ATMOSPHERIC_P_V2",       "path": "Engine",   "fmt": {"bix": 40,  "len": 8,  "max": 1047,                 "mul": -37, "div": 10,     "add": 1047,                  "unit": "unknown"           }, "name": "Atmospheric pressure"},
-    {"id": "DACIA_RPM",                    "path": "Movement", "fmt": {"bix": 48,  "len": 16, "max": 65535,                                                                         "unit": "rpm"               }, "name": "Engine speed"},
+    {"id": "DACIA_RPM_V2",                 "path": "Movement", "fmt": {"bix": 48,  "len": 16, "max": 65535,                                                                         "unit": "rpm"               }, "name": "Engine speed"},
     {"id": "DACIA_IDLE_REGULATION_VLV",    "path": "Engine",   "fmt": {"bix": 64,  "len": 16, "max": 65535,                                                                         "unit": "rpm"               }, "name": "Idle regulation valve reference value"},
     {"id": "DACIA_IDLE_SPD_REFERENCE_7E0", "path": "Movement", "fmt": {"bix": 64,  "len": 16, "max": 32767, "min": -32768,                                            "sign": true, "unit": "rpm"               }, "name": "Idle speed reference"},
     {"id": "DACIA_IDLE_REGULATION_V2",     "path": "Engine",   "fmt": {"bix": 80,  "len": 8,  "max": 4080,                 "mul": 16,                                               "unit": "rpm"               }, "name": "Idle regulation integral correction"},
@@ -1243,7 +1254,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "2002"}, "freq": 0.25,
   "signals": [
-    {"id": "DACIA_CURRENT_RPM", "path": "Movement", "fmt": { "len": 16, "max": 16383, "div": 4, "unit": "rpm" }, "name": "Current engine speed"}
+    {"id": "DACIA_RPM", "path": "Movement", "fmt": { "len": 16, "max": 16383, "div": 4, "unit": "rpm" }, "name": "Engine speed"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2003"}, "freq": 1,
   "signals": [
@@ -1269,9 +1280,9 @@
     {"id": "DACIA_EST_OIL_T",     "path": "Engine", "fmt": { "len": 16, "max": 6280.5, "min": -273, "div": 10, "add": -273, "unit": "celsius" }, "name": "Engine oil temperature, estimated", "suggestedMetric": "engineOilTemperature"},
     {"id": "DACIA_ESTIMATED_EOT", "path": "Engine", "fmt": { "len": 16, "max": 6280,   "min": -273, "div": 10, "add": -273, "unit": "celsius" }, "name": "Estimated engine oil temperature"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2008"}, "freq": 5,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "2008"}, "freq": 5,
   "signals": [
-    {"id": "DACIA_FUEL_T_V2", "path": "Fuel", "fmt": { "len": 16, "max": 6280, "min": -273, "div": 10, "add": -273, "unit": "celsius" }, "name": "Fuel temperature"}
+    {"id": "DACIA_FUEL_T", "path": "Fuel", "fmt": { "len": 16, "max": 6280, "min": -273, "div": 10, "add": -273, "unit": "celsius" }, "name": "Fuel temperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "2009"}, "freq": 1,
   "signals": [
@@ -1358,7 +1369,7 @@
   "signals": [
     {"id": "DACIA_WIRED_BRAKE_CONTACT", "path": "Control", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Brake contact, wired"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2027"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "2027"}, "freq": 1,
   "signals": [
     {"id": "DACIA_CLU_START_TRAVEL_SWITCH", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Clutch start of travel switch"}
   ]},
@@ -1437,7 +1448,7 @@
   "signals": [
     {"id": "DACIA_FLUID_P_SENS", "path": "Engine", "fmt": {"bix": 7, "len": 1, "max": 1, "unit": "scalar" }, "name": "Fluid pressure sensor configuration"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2045"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "2045"}, "freq": 1,
   "signals": [
     {"id": "DACIA_CLU_END_TRAVEL_SWITCH", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Clutch end of travel switch"}
   ]},
@@ -1632,7 +1643,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "20AA"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_MASTERVAC_P_V4", "path": "Engine", "fmt": { "len": 8, "max": 12750, "mul": 50, "unit": "unknown" }, "name": "Mastervac pressure"}
+    {"id": "DACIA_MASTERVAC_P_V3", "path": "Engine", "fmt": { "len": 8, "max": 12750, "mul": 50, "unit": "unknown" }, "name": "Mastervac pressure"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "20AC"}, "freq": 1,
   "signals": [
@@ -1646,9 +1657,9 @@
   "signals": [
     {"id": "DACIA_BOOST_P_SENS_V_7E0", "path": "Battery", "fmt": { "len": 16, "max": 65535, "unit": "millivolts" }, "name": "Boost pressure sensor voltage"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "20C8"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "20C8"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_LPG_P_7E0", "path": "Engine", "fmt": { "len": 16, "max": 65535, "unit": "unknown" }, "name": "Pressure, LPG"}
+    {"id": "DACIA_LPG_P_7E0", "path": "Engine", "fmt": { "len": 16, "max": 65535, "unit": "unknown" }, "name": "Liquefied petroleum gas pressure"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "20CD"}, "freq": 1,
   "signals": [
@@ -1663,9 +1674,13 @@
   "signals": [
     {"id": "DACIA_RICHNESS_REGULATION_V3", "path": "Engine", "fmt": { "len": 16, "max": 0.0999, "min": -0.1, "mul": 0.0000030518, "add": -0.1, "unit": "milliseconds" }, "name": "Richness regulation programming offset"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "20DD"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "20DC"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_OIL_VAPOUR_HEATER", "path": "Engine", "fmt": {"bix": 7, "len": 1, "max": 1, "unit": "scalar" }, "name": "Oil vapor heater"}
+    {"id": "DACIA_SWIRL_FLAP", "path": "Engine", "fmt": {"bix": 7, "len": 1, "max": 1, "unit": "offon" }, "name": "With swirl flap"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "20DD"}, "freq": 1,
+  "signals": [
+    {"id": "DACIA_OIL_VAPOUR_HEATER", "path": "Engine", "fmt": {"bix": 7, "len": 1, "max": 1, "unit": "offon" }, "name": "Oil vapour heater"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "20DE"}, "freq": 5,
   "signals": [
@@ -1791,9 +1806,9 @@
   "signals": [
     {"id": "DACIA_MAX_VSS", "path": "Movement", "fmt": { "len": 16, "max": 655, "div": 100, "unit": "kilometersPerHour" }, "name": "Maximum vehicle speed"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "21A3"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "21A3"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_FLYWHEEL_TGT_V2", "path": "Tires", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Flywheel, target programming"}
+    {"id": "DACIA_FLYWHEEL_TGT_PROGRAMMING", "path": "Tires", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Flywheel, target programming"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "21BC"}, "freq": 1,
   "signals": [
@@ -1898,11 +1913,11 @@
   "signals": [
     {"id": "DACIA_ENG_OIL_DILUTION_RAT", "path": "Engine", "fmt": { "len": 32, "max": 19.99, "mul": 0.0000000047, "add": 10, "sign": true, "unit": "percent" }, "name": "Engine oil dilution ratio"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "22AA"}, "freq": 3600,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "22AA"}, "freq": 3600,
   "signals": [
     {"id": "DACIA_STARTER_WEAR_CNT", "path": "Engine", "fmt": { "len": 24, "max": 16777215, "unit": "scalar" }, "name": "Starter wear counter"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "22AB"}, "freq": 3600,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "22AB"}, "freq": 3600,
   "signals": [
     {"id": "DACIA_HIGH_P_PMP_CNT", "path": "Engine", "fmt": { "len": 24, "max": 16777215, "unit": "scalar" }, "name": "High pressure pump counter"}
   ]},
@@ -1910,19 +1925,19 @@
   "signals": [
     {"id": "DACIA_VSS_INFORMATION", "path": "Movement", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Vehicle speed information circuit"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "22B4"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "22B4"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_END_CLU_SWITCH_TRAVEL", "path": "Transmission", "fmt": {"bix": 7, "len": 1, "max": 1, "unit": "scalar" }, "name": "End of clutch switch travel circuit"}
+    {"id": "DACIA_END_CLU_SWITCH_TRAVEL", "path": "Transmission", "fmt": {"bix": 7, "len": 1, "max": 1, "unit": "offon" }, "name": "End of clutch switch travel circuit"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "22B5"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "22B5"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_END_CLU_SWITCH", "path": "Transmission", "fmt": {"bix": 7, "len": 1, "max": 1, "unit": "scalar" }, "name": "End of clutch switch travel circuit"}
+    {"id": "DACIA_END_CLU_SWITCH", "path": "Transmission", "fmt": {"bix": 7, "len": 1, "max": 1, "unit": "offon" }, "name": "End of clutch switch travel circuit"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "22B6"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "22B6"}, "freq": 1,
   "signals": [
     {"id": "DACIA_CLU_SWITCH", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Clutch switch information"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "22B7"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "22B7"}, "freq": 1,
   "signals": [
     {"id": "DACIA_CLU_END_TRAVEL", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Clutch end of travel wiring switch"}
   ]},
@@ -1942,8 +1957,9 @@
   "signals": [
     {"id": "DACIA_TURBOCHARGING", "path": "Engine", "fmt": { "len": 16, "max": 655, "div": 100, "unit": "percent" }, "name": "Turbocharging solenoid valve OCR"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2404"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "2404"}, "freq": 0.25,
   "signals": [
+    {"id": "DACIA_THROTTLE_BODY",      "path": "Engine", "fmt": { "len": 16, "max": 3276,            "div": 20,   "unit": "percent" }, "name": "Throttle body opening"},
     {"id": "DACIA_AIR_INLET_FLAP_REL", "path": "Engine", "fmt": { "len": 16, "max": 3198, "mul": 61, "div": 1250, "unit": "percent" }, "name": "Air inlet flap relative position"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2405"}, "freq": 1,
@@ -1962,9 +1978,9 @@
   "signals": [
     {"id": "DACIA_EGR_VLV_OPENING", "path": "Engine", "fmt": { "len": 16, "max": 327, "min": -327, "div": 100, "add": -327.68, "unit": "percent" }, "name": "Exhaust gas recirculation VALVE OPENING REFERENCE"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2409"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "2409"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_EGR_VLV_CTRL_V2", "path": "Engine", "fmt": { "len": 16, "max": 327, "min": -327, "div": 100, "add": -327.68, "unit": "percent" }, "name": "Exhaust gas recirculation VALVE CONTROL"}
+    {"id": "DACIA_EGR_VLV_DUTY", "path": "Engine", "fmt": { "len": 16, "max": 327, "min": -327, "div": 100, "add": -327.68, "unit": "percent" }, "name": "Exhaust gas recirculation valve duty"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "240B"}, "freq": 1,
   "signals": [
@@ -1975,9 +1991,9 @@
     {"id": "DACIA_INLET_AIR_T_7E0", "path": "Engine", "fmt": { "len": 16, "max": 12826,              "div": 10, "add": 6273, "unit": "celsius" }, "name": "Inlet air temperature"},
     {"id": "DACIA_INLET_AIR_T",     "path": "Engine", "fmt": { "len": 16, "max": 6280,  "min": -273, "div": 10, "add": -273, "unit": "celsius" }, "name": "Inlet air temperature"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2412"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "2412"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_INLET_AIR_FLOW", "path": "Engine", "fmt": { "len": 16, "max": 6553, "div": 10, "unit": "unknown" }, "name": "Inlet air flow"}
+    {"id": "DACIA_MAF", "path": "Engine", "fmt": { "len": 16, "max": 6553, "div": 10, "unit": "unknown" }, "name": "Mass air flow"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2413"}, "freq": 1,
   "signals": [
@@ -2085,6 +2101,10 @@
 { "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "243A"}, "freq": 1,
   "signals": [
     {"id": "DACIA_TURBINE_UP_T_SENS_V_V2", "path": "Battery", "fmt": { "len": 16, "max": 10, "mul": 0.0001526, "unit": "volts" }, "name": "TURBINE UPSTREAM temperature. SENSOR VOLTAGE"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "243B"}, "freq": 5,
+  "signals": [
+    {"id": "DACIA_EXH_GAS_T", "path": "Engine", "fmt": { "len": 16, "max": 6280, "min": -273, "div": 10, "add": -273, "unit": "celsius" }, "name": "Exhaust gas temperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "243F"}, "freq": 1,
   "signals": [
@@ -2273,7 +2293,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "24F2"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_MAF",           "path": "Engine", "fmt": { "len": 16, "max": 6553.5, "div": 10, "unit": "gramsPerSecond" }, "name": "Measured air flow", "suggestedMetric": "massAirFlow"},
+    {"id": "DACIA_MAF_V2",        "path": "Engine", "fmt": { "len": 16, "max": 6553.5, "div": 10, "unit": "gramsPerSecond" }, "name": "Measured air flow", "suggestedMetric": "massAirFlow"},
     {"id": "DACIA_MEAS_AIR_FLOW", "path": "Engine", "fmt": { "len": 16, "max": 6553,   "div": 10, "unit": "unknown"        }, "name": "Measured air flow"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "24F3"}, "freq": 5,
@@ -2304,13 +2324,13 @@
   "signals": [
     {"id": "DACIA_DRAIN_CUT_VLV", "path": "Engine", "fmt": { "len": 16, "max": 655, "div": 100, "unit": "unknown" }, "name": "Drain cut valve diagnosis"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "251D"}, "freq": 5,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "251D"}, "freq": 5,
   "signals": [
     {"id": "DACIA_INTERNAL_T_SENS", "path": "Engine", "fmt": { "len": 16, "max": 6280, "min": -273, "div": 10, "add": -273, "unit": "celsius" }, "name": "Internal temperature sensor circuit"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "251E"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "251E"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_PROPORTIONAL", "path": "Engine", "fmt": { "len": 16, "max": 1.99, "div": 32768, "unit": "scalar" }, "name": "Proportional richness sensor"}
+    {"id": "DACIA_PROPORTIONAL", "path": "Engine", "fmt": { "len": 16, "max": 1.99, "mul": 0.0000305176, "unit": "scalar" }, "name": "Proportional richness sensor"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "251F"}, "freq": 1,
   "signals": [
@@ -2415,7 +2435,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2582"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_SWIRL_FLAP", "path": "Engine", "fmt": {"bix": 7, "len": 1, "max": 1, "unit": "scalar" }, "name": "Swirl flap programming open"}
+    {"id": "DACIA_SWIRL_FLAP_V2", "path": "Engine", "fmt": {"bix": 7, "len": 1, "max": 1, "unit": "scalar" }, "name": "Swirl flap programming open"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2589"}, "freq": 1,
   "signals": [
@@ -2486,9 +2506,10 @@
   "signals": [
     {"id": "DACIA_EXH_AIR_FLAP_POS", "path": "Engine", "fmt": { "len": 8, "max": 100, "mul": 20, "div": 51, "unit": "percent" }, "name": "Exhaust air flap position"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2801"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "2801"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_RAIL_P", "path": "Engine", "fmt": { "len": 16, "max": 65535, "unit": "bars" }, "name": "Rail pressure"}
+    {"id": "DACIA_FUEL_RAIL_P", "path": "Fuel",   "fmt": { "len": 16, "max": 451847, "mul": 6.8947572932, "unit": "kilopascal" }, "name": "Fuel rail pressure"},
+    {"id": "DACIA_RAIL_P",      "path": "Engine", "fmt": { "len": 16, "max": 65535,                       "unit": "bars"       }, "name": "Rail pressure"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2802"}, "freq": 1,
   "signals": [
@@ -2498,9 +2519,9 @@
   "signals": [
     {"id": "DACIA_INJ_DUR", "path": "Engine", "fmt": { "len": 24, "max": 67108860, "mul": 4, "unit": "milliseconds" }, "name": "Injection duration"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2806"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "2806"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_FUEL_FLOW_V3", "path": "Fuel", "fmt": { "len": 16, "max": 655, "div": 100, "unit": "unknown" }, "name": "Fuel flow"}
+    {"id": "DACIA_INJ_QTY", "path": "Engine", "fmt": { "len": 16, "max": 655, "div": 100, "unit": "unknown" }, "name": "Injection qty"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2807"}, "freq": 1,
   "signals": [
@@ -2668,9 +2689,9 @@
   "signals": [
     {"id": "DACIA_VACUUM_PMP_AGEING", "path": "Engine", "fmt": { "len": 16, "max": 6553500, "mul": 100, "unit": "seconds" }, "name": "Vacuum pump ageing counter"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2894"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "2894"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_MASTERVAC_P_V3", "path": "Engine", "fmt": { "len": 16, "max": 655, "div": 100, "unit": "volts" }, "name": "Brake booster pressure"}
+    {"id": "DACIA_MASTERVAC_P_7E0", "path": "Engine", "fmt": { "len": 16, "max": 655, "div": 100, "unit": "volts" }, "name": "Mastervac pressure"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2897"}, "freq": 1,
   "signals": [
@@ -2756,7 +2777,7 @@
   "signals": [
     {"id": "DACIA_CLU_START_TRAVEL_WIRING_V2", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Clutch start of travel wiring switch"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2958"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "din": "C0", "dbg": true, "cmd": {"22": "2958"}, "freq": 1,
   "signals": [
     {"id": "DACIA_BAT_CHG", "path": "Battery", "fmt": { "len": 8, "max": 127, "div": 2, "unit": "percent" }, "name": "Battery charge"}
   ]},
@@ -3295,7 +3316,7 @@
   ]},
 { "hdr": "7E1", "rax": "7E9", "din": "C0", "dbg": true, "cmd": {"21": "A7"}, "freq": 5,
   "signals": [
-    {"id": "DACIA_RPM_V2",              "path": "Movement",     "fmt": {            "len": 16, "max": 16383, "min": -16384, "div": 2,               "sign": true, "unit": "rpm"               }, "name": "Engine speed"},
+    {"id": "DACIA_RPM_V3",              "path": "Movement",     "fmt": {            "len": 16, "max": 16383, "min": -16384, "div": 2,               "sign": true, "unit": "rpm"               }, "name": "Engine speed"},
     {"id": "DACIA_GEARBOX_INPUT_2_SPD", "path": "Transmission", "fmt": {"bix": 32,  "len": 16, "max": 16383, "min": -16384, "div": 2,               "sign": true, "unit": "rpm"               }, "name": "Gearbox input 2 speed"},
     {"id": "DACIA_CLU_1_T",             "path": "Transmission", "fmt": {"bix": 64,  "len": 16, "max": 8191,  "min": -8192,  "div": 4,               "sign": true, "unit": "celsius"           }, "name": "Clutch 1 temperature"},
     {"id": "DACIA_VSS_7E1",             "path": "Movement",     "fmt": {"bix": 80,  "len": 16, "max": 655,                  "div": 100,                           "unit": "kilometersPerHour" }, "name": "Vehicle speed"},
@@ -4323,7 +4344,7 @@
   ]},
 { "hdr": "DADA", "rax": "DA", "dbg": true, "cmd": {"22": "1111"}, "freq": 5,
   "signals": [
-    {"id": "DACIA_FUEL_T", "path": "Fuel", "fmt": { "len": 8, "max": 205, "min": -50, "add": -50, "unit": "celsius" }, "name": "Fuel temperature"}
+    {"id": "DACIA_FUEL_T_V2", "path": "Fuel", "fmt": { "len": 8, "max": 205, "min": -50, "add": -50, "unit": "celsius" }, "name": "Fuel temperature"}
   ]},
 { "hdr": "DADA", "rax": "DA", "dbg": true, "cmd": {"22": "1112"}, "freq": 1,
   "signals": [
@@ -4973,7 +4994,8 @@
   ]},
 { "hdr": "DADA", "rax": "DA", "dbg": true, "cmd": {"22": "3042"}, "freq": 5,
   "signals": [
-    {"id": "DACIA_HV_A_3042", "path": "Battery", "fmt": { "len": 16, "max": 16383.75, "min": -16383.75, "div": 2, "add": -16383.75, "unit": "amps" }, "name": "High voltage battery current"}
+    {"id": "DACIA_HV_A_3042",     "path": "Battery", "fmt": { "len": 16, "max": 16383.75, "min": -16383.75, "div": 2, "add": -16383.75, "unit": "amps"   }, "name": "High voltage battery current"},
+    {"id": "DACIA_HV_A_3042_RAW", "path": "Battery", "fmt": { "len": 16, "max": 65535,                                                  "unit": "scalar" }, "name": "High voltage battery current, raw"}
   ]},
 { "hdr": "DADA", "rax": "DA", "dbg": true, "cmd": {"22": "3045"}, "freq": 5,
   "signals": [
@@ -6058,7 +6080,8 @@
   ]},
 { "hdr": "DADB", "rax": "DAF1DB", "fcm1": true, "dbg": true, "cmd": {"22": "9284"}, "freq": 1,
   "signals": [
-    {"id": "DACIA_TRACTION_BAT_CURRENT_DADB", "path": "Battery", "fmt": { "len": 32, "max": 2147483, "min": -2147483, "div": 1000, "sign": true, "unit": "amps" }, "name": "Traction battery, current"}
+    {"id": "DACIA_TRACTION_BAT_CURRENT_DADB", "path": "Battery", "fmt": { "len": 32, "max": 2147483, "min": -2147483,            "div": 1000, "sign": true, "unit": "amps" }, "name": "Traction battery, current"},
+    {"id": "DACIA_TRACTION_BAT_CURRENT_V2",   "path": "Battery", "fmt": { "len": 32, "max": 2147483, "min": -2147483, "mul": -1, "div": 1000, "sign": true, "unit": "amps" }, "name": "Traction battery, current"}
   ]},
 { "hdr": "DADB", "rax": "DAF1DB", "fcm1": true, "dbg": true, "cmd": {"22": "F1A0"}, "freq": 1,
   "signals": [
@@ -6098,23 +6121,28 @@
   ]},
 { "hdr": "DADF", "rax": "DF", "dbg": true, "cmd": {"22": "7007"}, "freq": 5,
   "signals": [
-    {"id": "DACIA_STATOR_A_U", "path": "Drivetrain", "fmt": { "len": 16, "max": 1547.9687, "min": -500, "div": 32, "add": -500, "unit": "amps" }, "name": "Stator current, phase u"}
+    {"id": "DACIA_STATOR_A_U",     "path": "Drivetrain", "fmt": { "len": 16, "max": 1547.9687,  "min": -500,        "div": 32, "add": -500,               "unit": "amps"   }, "name": "Stator current, phase u"},
+    {"id": "DACIA_STATOR_A_U_RAW", "path": "Drivetrain", "fmt": { "len": 32, "max": 2147483647, "min": -2147483648,                         "sign": true, "unit": "scalar" }, "name": "Stator current, phase U, raw"}
   ]},
 { "hdr": "DADF", "rax": "DF", "dbg": true, "cmd": {"22": "7008"}, "freq": 5,
   "signals": [
-    {"id": "DACIA_STATOR_A_V", "path": "Drivetrain", "fmt": { "len": 16, "max": 1547.9687, "min": -500, "div": 32, "add": -500, "unit": "amps" }, "name": "Stator current, phase v"}
+    {"id": "DACIA_STATOR_A_V",     "path": "Drivetrain", "fmt": { "len": 16, "max": 1547.9687,  "min": -500,        "div": 32, "add": -500,               "unit": "amps"   }, "name": "Stator current, phase v"},
+    {"id": "DACIA_STATOR_A_V_RAW", "path": "Drivetrain", "fmt": { "len": 32, "max": 2147483647, "min": -2147483648,                         "sign": true, "unit": "scalar" }, "name": "Stator current, phase V, raw"}
   ]},
 { "hdr": "DADF", "rax": "DF", "dbg": true, "cmd": {"22": "7009"}, "freq": 5,
   "signals": [
-    {"id": "DACIA_STATOR_A_W", "path": "Drivetrain", "fmt": { "len": 16, "max": 1547.9687, "min": -500, "div": 32, "add": -500, "unit": "amps" }, "name": "Stator current, phase w"}
+    {"id": "DACIA_STATOR_A_W",     "path": "Drivetrain", "fmt": { "len": 16, "max": 1547.9687,  "min": -500,        "div": 32, "add": -500,               "unit": "amps"   }, "name": "Stator current, phase w"},
+    {"id": "DACIA_STATOR_A_W_RAW", "path": "Drivetrain", "fmt": { "len": 32, "max": 2147483647, "min": -2147483648,                         "sign": true, "unit": "scalar" }, "name": "Stator current, phase W, raw"}
   ]},
 { "hdr": "DADF", "rax": "DF", "dbg": true, "cmd": {"22": "700C"}, "freq": 10,
   "signals": [
-    {"id": "DACIA_INV_T", "path": "Drivetrain", "fmt": { "len": 24, "max": 32727.998, "min": -40, "div": 512, "add": -40, "unit": "celsius" }, "name": "Inverter temperature"}
+    {"id": "DACIA_INV_T",     "path": "Drivetrain", "fmt": { "len": 24, "max": 32727.998,  "min": -40,         "div": 512, "add": -40,               "unit": "celsius" }, "name": "Inverter temperature"},
+    {"id": "DACIA_INV_T_RAW", "path": "Drivetrain", "fmt": { "len": 32, "max": 2147483647, "min": -2147483648,                         "sign": true, "unit": "scalar"  }, "name": "Inverter temperature, raw"}
   ]},
 { "hdr": "DADF", "rax": "DF", "dbg": true, "cmd": {"22": "700F"}, "freq": 10,
   "signals": [
-    {"id": "DACIA_STATOR_T1", "path": "Drivetrain", "fmt": { "len": 24, "max": 32727.998, "min": -40, "div": 512, "add": -40, "unit": "celsius" }, "name": "Stator temperature 1"}
+    {"id": "DACIA_STATOR_T1",     "path": "Drivetrain", "fmt": { "len": 24, "max": 32727.998,  "min": -40,         "div": 512, "add": -40,               "unit": "celsius" }, "name": "Stator temperature 1"},
+    {"id": "DACIA_STATOR_T1_RAW", "path": "Drivetrain", "fmt": { "len": 32, "max": 2147483647, "min": -2147483648,                         "sign": true, "unit": "scalar"  }, "name": "Stator temperature 1, raw"}
   ]},
 { "hdr": "DADF", "rax": "DF", "dbg": true, "cmd": {"22": "7010"}, "freq": 10,
   "signals": [
@@ -6126,7 +6154,8 @@
   ]},
 { "hdr": "DADF", "rax": "DF", "dbg": true, "cmd": {"22": "7049"}, "freq": 5,
   "signals": [
-    {"id": "DACIA_INV_HV_A", "path": "Drivetrain", "fmt": { "len": 16, "max": 1547.9687, "min": -500, "div": 32, "add": -500, "unit": "amps" }, "name": "Inverter high voltage current"}
+    {"id": "DACIA_INV_HV_A",     "path": "Drivetrain", "fmt": { "len": 16, "max": 1547.9687,  "min": -500,        "div": 32, "add": -500,               "unit": "amps"   }, "name": "Inverter high voltage current"},
+    {"id": "DACIA_INV_HV_A_RAW", "path": "Drivetrain", "fmt": { "len": 32, "max": 2147483647, "min": -2147483648,                         "sign": true, "unit": "scalar" }, "name": "Inverter high voltage current, raw"}
   ]},
 { "hdr": "DADF", "rax": "DF", "dbg": true, "cmd": {"22": "7050"}, "freq": 60,
   "signals": [
